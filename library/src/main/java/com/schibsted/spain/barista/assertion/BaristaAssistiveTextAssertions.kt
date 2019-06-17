@@ -3,8 +3,8 @@ package com.schibsted.spain.barista.assertion
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.platform.app.InstrumentationRegistry
 import com.google.android.material.textfield.TextInputLayout
 import com.schibsted.spain.barista.internal.assertAny
 import org.hamcrest.Description
@@ -14,7 +14,7 @@ import org.hamcrest.TypeSafeMatcher
 object BaristaAssistiveTextAssertions {
   @JvmStatic
   fun assertAssitiveText(@IdRes viewId: Int, @StringRes text: Int) {
-    val resourceString = InstrumentationRegistry.getTargetContext().resources.getString(text)
+    val resourceString = InstrumentationRegistry.getInstrumentation().targetContext.resources.getString(text)
     assertAssitiveText(viewId, resourceString)
   }
 
